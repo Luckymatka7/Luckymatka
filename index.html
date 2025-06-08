@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lucky Matka Wallet & Site</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      margin: 0; padding: 0; color: #000;
+    }
+    header {
+      background-color: #FFFF00;
+      padding: 20px;
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #000;
+    }
+    nav {
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      gap: 30px;
+      font-weight: bold;
+      user-select: none;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 1.1em;
+      cursor: pointer;
+      padding: 5px 12px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    nav a.active, nav a:hover {
+      background-color: #8A2BE2;
+      color: white;
+    }
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #8A2BE2;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .page {
+      display: none;
+    }
+    .page.active {
+      display: block;
+    }
+    /* Wallet page */
+    .container {
+      max-width: 420px;
+      margin: auto;
+      background: #fff8e1;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+      color: #000;
+      text-align: center;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 12px 0 6px;
+      text-align: left;
+    }
+    input[type="number"],
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #FF9800;
+      border: none;
+      border-radius: 5px;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.1em;
+      cursor: pointer;
+      padding: 10px 18px;
+      margin-top: 8px;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #f57c00;
+    }
+    .note {
+      background: #fff3e0;
+      padding: 15px;
+      border: 1px solid #ffb74d;
+      border-radius: 6px;
+      margin-top: 20px;
+      font-size: 0.9em;
+      line-height: 1.5em;
+      color: #6d4c41;
+      text-align: left;
+    }
+    /* QR Code */
+    #qr-code {
+      margin: 20px auto;
+      width: 220px;
+      height: 220px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      border-radius: 12px;
+      background: white;
+      display: block;
+    }
+    /* Copy button */
+    .copy-btn {
+      background-color: #8A2BE2;
+      color: white;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 8px;
+      font-weight: 600;
+      font-size: 0.9em;
+      vertical-align: middle;
+      transition: background-color 0.3s;
+    }
+    .copy-btn:hover {
+      background-color: #6a21b8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Lucky Matka Wallet</header>
+
+  <nav>
+    <a id="nav-home" class="active">Home</a>
+    <a id="nav-wallet">Wallet Recharge</a>
+    <a id="nav-withdraw">Withdraw Money</a>
+  </nav>
+
+  <main>
+    <!-- Home -->
+    <section id="page-home" class="page active">
+      <h2>Welcome to Lucky Matka</h2>
+      <p style="text-align:center; font-size:1.2em;">
+        Play smart, add money to your wallet and withdraw your winnings safely.
+      </p>
+    </section>
+
+    <!-- Wallet Recharge -->
+    <section id="page-wallet" class="page">
+      <div class="container">
+        <h2>Add Money to Wallet</h2>
+
+        <img id="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?data=upi://pay?pa=subhasisnayak680@okicici&pn=Lucky%20Matka&cu=INR&am=&tn=Lucky%20Matka%20Recharge&mode=02&orgid=000000" alt="UPI QR Code" />
+
+        <div style="margin-bottom: 10px; font-size: 1em; font-weight: 600;">
+          Scan this QR code in your UPI app or use the UPI ID below
+        </div>
+
+        <div style="margin-bottom: 15px;">
+          <span id="upi-id" style="font-size: 1.2em; font-weight: bold;">subhasisnayak680@okicici</span>
+          <button class="copy-btn" onclick="copyUPI()">Copy</button>
+        </div>
+
+        <form id="walletForm">
+          <label for="amount">Enter amount to add (₹50 minimum):</label>
+          <input type="number" id="amount" name="amount" min="50" placeholder="₹" required />
+
+          <label for="transactionId">Transaction Reference (optional):</label>
+          <input type="text" id="transactionId" name="transactionId" placeholder="UPI transaction ID or note" />
+
+          <button type="submit">Confirm Payment</button>
+        </form>
+
+        <div class="note">
+          <ul style="padding-left: 18px;">
+            <li>Minimum recharge amount is ₹50.</li>
+            <li>Make payment via your UPI app by scanning QR code or using the UPI ID.</li>
+            <li>Enter the exact amount you paid and transaction reference to help us verify.</li>
+            <li>After submission, your wallet balance will be updated after admin confirmation.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Withdraw Money -->
+    <section id="page-withdraw" class="page">
+      <div class="container">
+        <h2>Withdraw Your Winnings</h2>
+
+        <form id="withdrawForm">
+          <label for="withdrawAmount">Enter withdrawal amount (minimum ₹100):</label>
+          <input type="number" id="withdrawAmount" name="withdrawAmount" min="100" placeholder="₹" required />
+
+          <label for="upiWithdrawId">Enter your UPI ID to receive money:</label>
+          <input type="text" id="upiWithdrawId" name="upiWithdrawId" placeholder="example@bank" required />
+
+          <button type="submit">Request Withdrawal</button>
+        </form>
+
+        <div class="note">
+          Withdrawals are processed only after <strong>30 minutes</strong> from contest end.<br />
+          Processing time may take up to 24 hours.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Navigation logic
+    const pages = {
+      home: document.getElementById('page-home'),
+      wallet: document.getElementById('page-wallet'),
+      withdraw: document.getElementById('page-withdraw'),
+    };
+
+    const navLinks = {
+      home: document.getElementById('nav-home'),
+      wallet: document.getElementById('nav-wallet'),
+      withdraw: document.getElementById('nav-withdraw'),
+    };
+
+    function setActivePage(pageName) {
+      Object.values(pages).forEach(p => p.classList.remove('active'));
+      Object.values(navLinks).forEach(l => l.
